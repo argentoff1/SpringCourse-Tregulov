@@ -1,44 +1,54 @@
 package com.tregulov.spring_introduction;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("personBean")
 public class Person {
+    @Autowired
+    @Qualifier("catBean")
     private Pet pet;
+    @Value("${person.surname}")
     private String surname;
+    @Value("${person.age}")
     private int age;
 
-    public Person(Pet pet) {
-        System.out.println("Бин человека создан");
+    public Person( Pet pet) {
+        System.out.println("Person bean is created");
         this.pet = pet;
     }
 
     public Person() {
-        System.out.println("Бин человека создан");
+        System.out.println("Person bean is created");
     }
 
     public void setPet(Pet pet) {
-        System.out.println("В класс Person добавлено животное");
+        System.out.println("Class Person: set Pet");
         this.pet = pet;
     }
 
     public String getSurname() {
-        System.out.println("Класс Person: set surname");
         return surname;
     }
 
     public int getAge() {
-        System.out.println("Класс Person: set age");
         return age;
     }
 
     public void setSurname(String surname) {
+        System.out.println("Class Person: set surname");
         this.surname = surname;
     }
 
     public void setAge(int age) {
+        System.out.println("Class Person: set age");
         this.age = age;
     }
 
     public void callYourPet() {
-        System.out.println("Привет, мое любимое животное!");
+        System.out.println("Hello, my lovely Pet!");
         pet.say();
     }
 }
