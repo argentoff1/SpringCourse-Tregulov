@@ -2,16 +2,16 @@ package com.tregulov.aop;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("universityLibrary")
 public class UniversityLibrary extends AbstractLibrary {
     public void getBook() {
         System.out.println("Берем книгу из University Library");
         System.out.println("---------------------------------------");
     }
 
-    public void returnBook() {
+    public String returnBook() {
         System.out.println("Мы возвращаем книгу в University Library");
-        System.out.println("---------------------------------------");
+        return "Война и мир";
     }
 
     public void getMagazine() {
